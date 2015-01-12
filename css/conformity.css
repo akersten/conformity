@@ -22,7 +22,7 @@ html, body {
  * course, this only works properly by setting the wrap="off" attribute
  * in the actual HTML, go figure.
  **/
-#mainTextarea {
+#iMainTextarea {
     font-family: monospace;
     overflow: scroll;
     white-space: nowrap;

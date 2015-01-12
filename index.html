@@ -12,7 +12,14 @@
 
     <link rel="stylesheet" href="css/conformity.css">
 
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/conformity.js"></script>
+    <script type="text/javascript">
+        // Page-specific wrapper for lint functions in conformity.js
+        function doLint() {
+            lint(document.getElementById("iMainTextarea").value,
+                    document.getElementById("iMinify").checked);
+        }
+    </script>
 
     <title>Conformity</title>
 </head>
@@ -26,6 +33,7 @@
             <input class="btn btn-primary"
                    type="button"
                    value="Lint"
+                   onclick="doLint();"
                     />
             to
             <div class="input-group">
@@ -45,7 +53,9 @@
 
             <div class="checkbox-inline">
                 <label>
-                    <input type="checkbox">
+                    <input
+                            type="checkbox"
+                            id="iMinify">
                     Minify
                     <span
                             class="glyphicon glyphicon-question-sign"
@@ -65,7 +75,7 @@
     </div>
 
     <div id="textareaContainer">
-        <textarea id="mainTextarea" wrap="off"></textarea>
+        <textarea id="iMainTextarea" wrap="off"></textarea>
     </div>
 </div>
 

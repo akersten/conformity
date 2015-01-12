@@ -16,8 +16,11 @@
     <script type="text/javascript">
         // Page-specific wrapper for lint functions in conformity.js
         function doLint() {
-            lint(document.getElementById("iMainTextarea").value,
-                    document.getElementById("iMinify").checked);
+            var newText = lint(document.getElementById("iMainTextarea").value,
+                    document.getElementById("iMinify").checked,
+                    document.getElementById("iNumColumns").value
+            );
+            document.getElementById("iMainTextarea").value = newText;
         }
     </script>
 

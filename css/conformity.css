@@ -1,0 +1,33 @@
+html, body {
+    height: 100%;
+}
+
+#controlsContainer {
+    height: 6em;
+}
+
+#textareaContainer {
+    height: calc(100% - 12em);
+}
+
+/**
+ * Don't need the column width selection to be that wide...
+ **/
+#iNumColumns {
+    width: 6em;
+}
+
+/**
+ * We'll want the main textarea to be monospace with no wrapping. Of
+ * course, this only works properly by setting the wrap="off" attribute
+ * in the actual HTML, go figure.
+ **/
+#mainTextarea {
+    font-family: monospace;
+    overflow: scroll;
+    white-space: nowrap;
+
+    width: 100%;
+    height: 100%;
+}
+

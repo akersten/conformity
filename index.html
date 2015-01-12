@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta name="description" content="A plaintext linter; fixed column width formatter and reflower">
+    <meta
+            name="description"
+            content="A plaintext linter; fixed column width formatter and reflower"
+            >
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" href="css/conformity.css">
 
     <script src="js/bootstrap.min.js"></script>
 
@@ -13,7 +18,56 @@
 </head>
 <body>
 
-<textarea id="mainTextarea"></textarea>
+<div class="container" style="height: 100%;">
+    <div id="controlsContainer">
+        <h3>Conformity</h3>
+
+        <form class="form-inline">
+            <input class="btn btn-primary"
+                   type="button"
+                   value="Lint"
+                    />
+            to
+            <div class="input-group">
+                <input
+                        id="iNumColumns"
+                        class="form-control"
+                        type="number"
+                        aria-describedby="numColumnsAddon"
+                        />
+                <span
+                        class="input-group-addon"
+                        id="numColumnsAddon"
+                        >
+                    columns
+                </span>
+            </div>
+
+            <div class="checkbox-inline">
+                <label>
+                    <input type="checkbox">
+                    Minify
+                    <span
+                            class="glyphicon glyphicon-question-sign"
+                            title="Ignore existing line breaks and format the text as a continuous blob. Typically not what you want, but can be useful."
+                            >
+                    </span>
+                </label>
+            </div>
+
+            <script type="text/javascript">
+                // Because the HTML attribute value="80" doesn't work for type="number"
+                // at the time of writing.
+                document.getElementById('iNumColumns').value = '80';
+            </script>
+
+        </form>
+    </div>
+
+    <div id="textareaContainer">
+        <textarea id="mainTextarea" wrap="off"></textarea>
+    </div>
+</div>
 
 </body>
 </html>

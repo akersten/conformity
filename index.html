@@ -29,56 +29,63 @@
 <body>
 
 <div class="container" style="height: 100%;">
-    <div id="controlsContainer">
-        <h3>Conformity</h3>
+    <div id="controlsContainer" class="row">
+        <div class="col-md-12">
+            <h3>Conformity</h3>
 
-        <form class="form-inline">
-            <input class="btn btn-primary"
-                   type="button"
-                   value="Lint"
-                   onclick="doLint();"
-                    />
-            to
-            <div class="input-group">
-                <input
-                        id="iNumColumns"
-                        class="form-control"
-                        type="number"
-                        aria-describedby="numColumnsAddon"
+            <form class="form-inline">
+                <input class="btn btn-primary"
+                       type="button"
+                       value="Lint"
+                       onclick="doLint();"
                         />
+                to
+                <div class="input-group">
+                    <input
+                            id="iNumColumns"
+                            class="form-control"
+                            type="number"
+                            aria-describedby="numColumnsAddon"
+                            />
                 <span
                         class="input-group-addon"
                         id="numColumnsAddon"
                         >
                     columns
                 </span>
-            </div>
+                </div>
 
-            <div class="checkbox-inline">
-                <label>
-                    <input
-                            type="checkbox"
-                            id="iMinify">
-                    Minify
+                <div class="checkbox-inline">
+                    <label>
+                        <input
+                                type="checkbox"
+                                id="iMinify">
+                        Minify
                     <span
                             class="glyphicon glyphicon-question-sign"
                             title="Ignore existing line breaks and format the text as a continuous blob. Typically not what you want, but can be useful."
                             >
                     </span>
-                </label>
-            </div>
+                    </label>
+                </div>
 
-            <script type="text/javascript">
-                // Because the HTML attribute value="80" doesn't work for type="number"
-                // at the time of writing.
-                document.getElementById('iNumColumns').value = '80';
-            </script>
+                <script type="text/javascript">
+                    // Because the HTML attribute value="80" doesn't work for type="number"
+                    // at the time of writing.
+                    document.getElementById('iNumColumns').value = '80';
+                </script>
 
-        </form>
+            </form>
+        </div>
     </div>
 
-    <div id="textareaContainer">
-        <textarea id="iMainTextarea" wrap="off"></textarea>
+    <div id="textareaContainer" class="row">
+        <div class="col-md-12">
+            <textarea
+                    class="form-control"
+                    id="iMainTextarea"
+                    wrap="off"></textarea>
+        </div>
     </div>
 </div>
 

@@ -10,11 +10,8 @@ html, body, .expandV {
     height: calc(100% - 12em);
 }
 
-/**
- * Don't need the column width selection to be that wide...
- **/
-#iNumColumns {
-    width: 6em;
+#iMainTextarea {
+    margin-top: 2em;
 }
 
 /**

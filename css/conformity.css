@@ -2,18 +2,6 @@ html, body, .expandV {
     height: 100%;
 }
 
-#controlsContainer {
-    height: 6em;
-}
-
-#textareaContainer {
-    height: calc(100% - 12em);
-}
-
-#iMainTextarea {
-    margin-top: 2em;
-}
-
 /**
  * We'll want the main textarea to be monospace with no wrapping. Of
  * course, this only works properly by setting the wrap="off" attribute
@@ -25,6 +13,6 @@ html, body, .expandV {
     white-space: nowrap;
 
     width: 100%;
-    height: 100%;
+    margin-top: 2em;
+    height: calc(100% - 4em);
 }
-

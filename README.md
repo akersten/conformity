@@ -1,6 +1,9 @@
 # conformity
 A plaintext linter; fixed column width formatter and reflower
 
+See [conformity](http://kersten.io/conformity) in action at
+[http://kersten.io/conformity](http://kersten.io/conformity)
+
 ## Overview
 
 Conformity is an interactive column length wrapper (think `gq` in vim). It can

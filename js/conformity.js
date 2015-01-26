@@ -73,6 +73,9 @@ function minify_impl(text, width) {
  * This has the effect of limiting the column width without compressing things
  * like section headers.
  *
+ * This can actually be thought of as "split the document into chunks separated
+ * by blank lines and then do the minify operation on those chunks".
+ *
  * @param text The text to lint
  * @param width How long each line should be, at maximum
  */
@@ -84,25 +87,16 @@ function lint_impl(text, width) {
         width = 1;
     }
 
-    var lines = text.split("\n");
+    // Split based on one or more blank lines
+    text = text.replace(/\r\n/g, "\n");
+    text = text.replace(/\n(\n)+/g, "\n\n");
+    var chunks = text.split("\n\n");
     var res = "";
 
-    // The way the mapping will work is to generate new lines of output,
-    // inserting new lines for overflow where need be.
-    lines.map(function(line) {
-        // Now, check the length of this line.
-        if (line.length <= width) {
-            // This line fits entirely.
-            res += line;
-        } else {
-            // Ok, the line with overflow is too long (or even without overflow
-            // it could just be too long), so split by words and try to get this
-            // line below the width limit... Hey, we can re-use the minify
-            // function here!
-            res += minify_impl(line, width);
-        }
-
-        res += "\n"
+    chunks.map(function(chunk) {
+        // Minify the chunks and put them back in a result, separated by double
+        // newlines.
+        res += minify_impl(chunk, width) + "\n\n";
     });
 
     // Trim the last added newline...

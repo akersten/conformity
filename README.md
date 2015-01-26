@@ -26,10 +26,10 @@ mutli-line code comments or plaintext documents, occasionally lines would get
 
 This was a quick project, and the following items still need to be explored:
 
-[ ] Unicode support (it might work just right out of the box - I've got no
+- [ ] Unicode support (it might work just right out of the box - I've got no
 idea how good JS's built-in length functions are. I wonder if they properly
 count unicode?)
-[ ] Proper test cases (one of my goals is to find the best way of automating
+- [ ] Proper test cases (one of my goals is to find the best way of automating
 JS testing)
 
 ## Contributors

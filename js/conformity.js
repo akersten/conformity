@@ -1,7 +1,6 @@
 function lint(text, minify, width) {
     minify = (typeof minify === "undefined") ? false : minify;
     if (minify) {
-
         return minify_impl(text, width);
     } else {
         return lint_impl(text, width);
@@ -63,5 +62,50 @@ function minify_impl(text, width) {
         }
     });
 
+    return res;
+}
+
+/**
+ * Crawl the text line by line, looking for lines that are longer than the width
+ * and if one is found, flow its text into the next line, and continue flowing
+ * any affected lines.
+ *
+ * This has the effect of limiting the column width without compressing things
+ * like section headers.
+ *
+ * @param text The text to lint
+ * @param width How long each line should be, at maximum
+ */
+function lint_impl(text, width) {
+    width = (typeof width === "undefined") ? 1 : width;
+    text = (typeof text === "undefined") ? "" : text;
+
+    if (width < 1) {
+        width = 1;
+    }
+
+    var lines = text.split("\n");
+    var res = "";
+
+    // The way the mapping will work is to generate new lines of output,
+    // inserting new lines for overflow where need be.
+    lines.map(function(line) {
+        // Now, check the length of this line.
+        if (line.length <= width) {
+            // This line fits entirely.
+            res += line;
+        } else {
+            // Ok, the line with overflow is too long (or even without overflow
+            // it could just be too long), so split by words and try to get this
+            // line below the width limit... Hey, we can re-use the minify
+            // function here!
+            res += minify_impl(line, width);
+        }
+
+        res += "\n"
+    });
+
+    // Trim the last added newline...
+    res = res.substr(0, res.length - 1);
     return res;
 }
